@@ -1,4 +1,7 @@
-#pragma once
+
+//#include "GameItemBase.cpp"
+#include "GameItemBase.h"
+
 class BreakOutGame
 {
 public:

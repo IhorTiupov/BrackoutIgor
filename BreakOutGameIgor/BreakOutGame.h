@@ -1,4 +1,7 @@
 #pragma once
+#include <iostream>
+#include "GameItemBase.h"
+
 class BreakOutGame
 {
 public:
@@ -15,6 +18,12 @@ public:
         std::cout << " Exit game  - 's' " << std::endl;
         setUserOption();
     }
+
+    void buildGame()
+    {
+        void draw();
+    }
+
 private:
     void setUserOption()
     {
@@ -39,20 +48,23 @@ private:
                 exit();
                 break;
             }
-            else if (optionCase != 'e' || 's' || 'p')
+            else
             {
                 std::cout << "invalid volue, please try again: - ";
             }
         }
+        start();
     }
     char start()
     {
         std::cout << " start";
+        buildGame();
         return 0;
     }
+    
     char restart()
     {
-        std::cout << " start";
+        std::cout << " restart";
         return 0;
     }
     char pause()
@@ -67,7 +79,7 @@ private:
     }
     bool stop()
     {
-        std::cout << " start";
+        std::cout << " stop";
         return 0;
     }
     bool gameOver()

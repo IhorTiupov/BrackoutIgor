@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "BreakOutGame.h"
+#include "GameItemBase.h"
 
 
 
@@ -10,6 +11,7 @@ int main()
 {
     BreakOutGame game;
     game.printMenu();
+    
 
     return 0;
 }
