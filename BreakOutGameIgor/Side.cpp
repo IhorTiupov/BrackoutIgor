@@ -1,9 +1,10 @@
 
 
-class Side
-{
-	virtual void draw()
-	{
+#include "Side.h"
 
+
+
+void Side::draw()
+	{
+	std::cout << "draw";
 	}
-};
