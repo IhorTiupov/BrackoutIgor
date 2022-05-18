@@ -21,10 +21,13 @@
     <ClCompile Include="BreakOutGame.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="GameItemBase.cpp">
+    <ClCompile Include="HorisontSide.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Side.cpp">
+    <ClCompile Include="VerticalSide.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameItemBase.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +38,10 @@
     <ClInclude Include="GameItemBase.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Side.h">
+    <ClInclude Include="HorisontSide.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="VerticalSide.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,7 @@
 
 #include "BreakOutGame.h"
 #include <iostream>
+#include <conio.h>
 
 
     void BreakOutGame::printMenu()
@@ -10,7 +11,6 @@
         std::string name;
         std::cin >> name;
         std::cout << " Enter your choice!!! " << std::endl;
-
         std::cout << " Start game - 's' " << std::endl;
         std::cout << " Pause      - 'p' " << std::endl;
         std::cout << " Exit game  - 'e' " << std::endl;
@@ -19,7 +19,8 @@
 
     void BreakOutGame::buildGame()
     {
-        //draw();
+       // ball.setCoordinate(10, 20);
+        //leftSide.setCord(0, 0);
     }
 
 
@@ -56,33 +57,65 @@
 
     void BreakOutGame::start()
     {
-        std::cout << " start";
-        buildGame();
+        {
+            while (isGameContiniue)
+            {
+                system("cls");
+                printField();
+                char pressedKey = _getch();
+                switch (pressedKey)
+                {
+                case 'p':
+                    pause();
+                    break;
+                case 's':
+                    stop();
+                    break;
+                }
+                //ball.moveBall();
+            }
 
+        }
+    }
+    void BreakOutGame::printField()
+    {
+        for (const auto& line : gameField)
+        {
+            for (const auto& simbol : line)
+            {
+                std::cout << simbol;
+            }
+            std::cout << std::endl;
+        }
+    }
+    void BreakOutGame::timer()
+    {
     }
 
-    char BreakOutGame::restart()
+    void BreakOutGame::restart()
     {
         std::cout << " restart";
-        return 0;
+       
     }
-    char BreakOutGame::pause()
+    void BreakOutGame::pause()
     {
         std::cout << " pause";
-        return 0;
+        system("pause");
     }
-    char BreakOutGame::exit()
+    void BreakOutGame::exit()
     {
         std::cout << " exit";
-        return 0;
+        
     }
-    bool BreakOutGame::stop()
+    void BreakOutGame::stop()
     {
         std::cout << " stop";
-        return 0;
+        isGameContiniue = false;
     }
     bool BreakOutGame::gameOver()
     {
         return 0;
     }
+
+
 
