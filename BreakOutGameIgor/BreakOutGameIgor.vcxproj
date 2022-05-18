@@ -142,12 +142,14 @@
     <ClCompile Include="BreakOutGameIgor.cpp" />
     <ClCompile Include="BreakOutGame.cpp" />
     <ClCompile Include="GameItemBase.cpp" />
-    <ClCompile Include="Side.cpp" />
+    <ClCompile Include="HorisontSide.cpp" />
+    <ClCompile Include="VerticalSide.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BreakOutGame.h" />
     <ClInclude Include="GameItemBase.h" />
-    <ClInclude Include="Side.h" />
+    <ClInclude Include="HorisontSide.h" />
+    <ClInclude Include="VerticalSide.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

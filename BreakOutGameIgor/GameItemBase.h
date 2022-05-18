@@ -3,18 +3,20 @@
 #include "BreakOutGame.h"
 #include <vector>
 
+
 class GameItemBase
 {
 public:
+	//GameItemBase(){}
 
-
-	virtual void draw() = 0;
-
-
-	void setCord()
-	{}
+	virtual void draw(std::vector< std::vector<char> >& field) = 0;
+	void setCord(int x, int y);
+	
+	int getX();
+	int getY();
+	void setX(int x);
+	void setY(int y);
 private:
-	std::vector<char> typeWall_;
 	int x_;
 	int y_;
 
