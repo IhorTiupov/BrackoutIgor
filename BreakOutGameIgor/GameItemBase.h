@@ -1,14 +1,13 @@
 #pragma once
 
-#include "BreakOutGame.h"
+
 #include <vector>
 
 
 class GameItemBase
 {
 public:
-	//GameItemBase(){}
-
+	GameItemBase();
 	virtual void draw(std::vector< std::vector<char> >& field) = 0;
 	void setCord(int x, int y);
 	

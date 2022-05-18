@@ -6,6 +6,11 @@ void GameItemBase::setCord(int x, int y)
 	y_ = y;
 }
 
+GameItemBase::GameItemBase(): x_(0), y_(0)
+{
+		
+}
+
 int   GameItemBase::getX()
 {
 	return x_;

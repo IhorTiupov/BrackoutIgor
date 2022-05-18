@@ -2,6 +2,7 @@
 
 
 
+HorisontSide::HorisontSide(): GameItemBase() {}
 
-void HorisontSide::draw(std::vector< std::vector<char> >&field) {};
+void HorisontSide::draw(std::vector< std::vector<char> >&field) {}
 	

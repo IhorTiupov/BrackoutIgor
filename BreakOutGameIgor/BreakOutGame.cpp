@@ -11,7 +11,6 @@
         std::string name;
         std::cin >> name;
         std::cout << " Enter your choice!!! " << std::endl;
-
         std::cout << " Start game - 's' " << std::endl;
         std::cout << " Pause      - 'p' " << std::endl;
         std::cout << " Exit game  - 'e' " << std::endl;
@@ -63,7 +62,7 @@
             {
                 system("cls");
                 printField();
-                char pressedKey = getch();
+                char pressedKey = _getch();
                 switch (pressedKey)
                 {
                 case 'p':
