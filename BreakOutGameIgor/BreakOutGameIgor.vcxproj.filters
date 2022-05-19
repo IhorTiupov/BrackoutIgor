@@ -44,5 +44,8 @@
     <ClInclude Include="VerticalSide.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="ConstDigit.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

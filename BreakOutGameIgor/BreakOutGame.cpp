@@ -11,18 +11,11 @@
         std::string name;
         std::cin >> name;
         std::cout << " Enter your choice!!! " << std::endl;
-        std::cout << " Start game - 's' " << std::endl;
+        std::cout << " Start game/stop - 's' " << std::endl;
         std::cout << " Pause      - 'p' " << std::endl;
         std::cout << " Exit game  - 'e' " << std::endl;
         setUserOption();
     }
-
-    void BreakOutGame::buildGame()
-    {
-       // ball.setCoordinate(10, 20);
-        //leftSide.setCord(0, 0);
-    }
-
 
     void BreakOutGame::setUserOption()
     {
@@ -58,6 +51,7 @@
     void BreakOutGame::start()
     {
         {
+            buildGame();
             while (isGameContiniue)
             {
                 system("cls");
@@ -71,12 +65,33 @@
                 case 's':
                     stop();
                     break;
+
+                case 'r':
+                    restart();
+                    break;
+                case 'e':
+                    exit();
+                    break;
+                case myConsts::LEFT_MOVE:
+                    //exit();
+                    break;
+                case myConsts::RIGTH_MOVE:
+                    //exit();
+                    break;
                 }
                 //ball.moveBall();
             }
 
         }
     }
+    void BreakOutGame::buildGame()
+    {
+        downSide.draw();
+        upSide.draw();
+        leftSide.draw();
+        rightSide.draw();
+    }
+
     void BreakOutGame::printField()
     {
         for (const auto& line : gameField)
@@ -95,7 +110,7 @@
     void BreakOutGame::restart()
     {
         std::cout << " restart";
-       
+        start();
     }
     void BreakOutGame::pause()
     {
@@ -105,7 +120,6 @@
     void BreakOutGame::exit()
     {
         std::cout << " exit";
-        
     }
     void BreakOutGame::stop()
     {
@@ -114,6 +128,8 @@
     }
     bool BreakOutGame::gameOver()
     {
+        //if(live != 0)
+
         return 0;
     }
 

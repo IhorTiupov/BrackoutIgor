@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BreakOutGame.h" />
+    <ClInclude Include="ConstDigit.h" />
     <ClInclude Include="GameItemBase.h" />
     <ClInclude Include="HorisontSide.h" />
     <ClInclude Include="VerticalSide.h" />
