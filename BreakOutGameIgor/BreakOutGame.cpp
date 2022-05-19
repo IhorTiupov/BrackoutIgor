@@ -4,6 +4,11 @@
 #include <conio.h>
 
 
+BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
+    verticalSide(VerticalSide{ gameField }), paddle(Paddle{ gameField }),
+    brick(Brick{ gameField }), ball(Ball{ gameField })
+    {}
+
     void BreakOutGame::printMenu()
     {
         system("cls");
@@ -50,8 +55,8 @@
 
     void BreakOutGame::start()
     {
+        buildGame();
         {
-            buildGame();
             while (isGameContiniue)
             {
                 system("cls");
@@ -73,10 +78,10 @@
                     exit();
                     break;
                 case myConsts::LEFT_MOVE:
-                    //exit();
+                    //movePaddlLeft();
                     break;
                 case myConsts::RIGTH_MOVE:
-                    //exit();
+                   // movePaddlRigth();
                     break;
                 }
                 //ball.moveBall();
@@ -84,12 +89,21 @@
 
         }
     }
+    //void movePaddlRigth(int x)
+    //{
+    //    
+    //}
+    //void movePaddlRigth(int x)
+    //{
+
+    //}
     void BreakOutGame::buildGame()
     {
-        downSide.draw();
-        upSide.draw();
-        leftSide.draw();
-        rightSide.draw();
+        verticalSide.draw();
+        horisontSide.draw();
+        paddle.draw();
+        brick.draw();
+        ball.draw();
     }
 
     void BreakOutGame::printField()
@@ -132,6 +146,8 @@
 
         return 0;
     }
+
+    
 
 
 

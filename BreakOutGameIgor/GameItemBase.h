@@ -1,29 +1,26 @@
-#pragma once
+#pragma once 
 
 #include <memory>
-#include <vector>
-
+#include <vector> 
+#include "ConstDigit.h"
 
 class GameItemBase
 {
 public:
-	GameItemBase();
-	GameItemBase(std::shared_ptr<std::vector< std::vector<char>> > field);
+	GameItemBase(myConsts::GameArea& field);
 	virtual void draw() = 0;
-	void setCord(int x, int y);
 
+	void setCord(int x, int y);
 	int getX();
 	int getY();
 	void setX(int x);
 	void setY(int y);
 
 protected:
-	std::shared_ptr<std::vector< std::vector<char>> > field;
+	myConsts::GameArea& field;
 
 private:
 	int x_;
 	int y_;
-
 };
-
 

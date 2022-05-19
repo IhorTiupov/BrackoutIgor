@@ -3,32 +3,33 @@
 #include "GameItemBase.h"
 #include "HorisontSide.h"
 #include "VerticalSide.h"
+#include "Brick.h"
+#include "Paddle.h"
+#include "Ball.h"
 #include "ConstDigit.h"
 #include <vector>
+
+
 
 
 class BreakOutGame
 {
 public:
-    BreakOutGame() : downSide(HorisontSide{ std::make_shared<std::vector<std::vector<char>> >(gameField) }),
-        upSide(HorisontSide{ std::make_shared<std::vector<std::vector<char>> >(gameField) }),
-        leftSide(VerticalSide{ std::make_shared<std::vector<std::vector<char>> >(gameField) }),
-        rightSide(VerticalSide{ std::make_shared<std::vector<std::vector<char>> >(gameField) })
-    {}
+    BreakOutGame();
     void printMenu();
     void buildGame();
-
+   
 private:
     //char simbol;
-    std::vector<std::vector<char>> gameField { myConsts::VERTICAL_LENGTH, std::vector<char>(myConsts::HORISONT_LENGTH, ' ') };
-    //Ball ball;
-    //Paddle paddle;
+    
+    myConsts::GameArea gameField { myConsts::VERTICAL_LENGTH, std::vector<char>(myConsts::HORISONT_LENGTH, myConsts::FIELD_SIMBOL) };
+    Ball ball;
+    Paddle paddle;
+    Brick brick;
     //Data data;
-    HorisontSide downSide;
-    HorisontSide upSide;
-    VerticalSide leftSide;
-    VerticalSide rightSide;
-
+    HorisontSide horisontSide;
+    VerticalSide verticalSide;
+    
     bool isGameContiniue = true;
     void setUserOption();
     void start();
@@ -39,8 +40,8 @@ private:
     void stop();
     bool gameOver();
     void printField();
-  
-};
+    //void movePaddlLeft();
+};  //void movePaddlRigth();
 
 
 

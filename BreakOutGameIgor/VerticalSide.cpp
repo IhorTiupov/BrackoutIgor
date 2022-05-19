@@ -1,13 +1,13 @@
 #include "VerticalSide.h"
 
 
-
-VerticalSide::VerticalSide() : GameItemBase() {}
-
-VerticalSide::VerticalSide(std::shared_ptr<std::vector< std::vector<char>> > playField) : GameItemBase(playField) {}
+VerticalSide::VerticalSide(myConsts::GameArea& playField) : GameItemBase(playField) {}
 
 void VerticalSide::draw()
 {
-	int i = 0;
-	(*field)[i][0] = '|';
+    for (int i = 0; i < myConsts::VERTICAL_LENGTH; ++i)
+    {
+        field[i][0] = '|';
+        field[i][myConsts::HORISONT_LENGTH - 1] = '|';
+    }
 }
