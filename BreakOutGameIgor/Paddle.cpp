@@ -1,16 +1,26 @@
-
 #include "Paddle.h"
 
-Paddle::Paddle(myConsts::GameArea& playField) : GameItemBase(playField) {}
+Paddle::Paddle(myConsts::GameArea& playField) : GameItemBase(playField)
+{
+    setX(myConsts::HORISONT_LENGTH / 2);
+}
 
 void Paddle::draw()
 {
-    for (int i = 9; i < 11; ++i)
+    int position = getX();
+    clearPaddle();
+    for (int i = position; i < position + 3; ++i)
     {
-        field[myConsts::VERTICAL_LENGTH-2][i] = '=';
+        field[myConsts::VERTICAL_LENGTH - 2][i] = '=';
     }
+}
 
-  
-} 
-//void Paddle::getX()
+void Paddle::clearPaddle()
+{
+    for (int i = 1; i < 19; ++i)
+    {
+        field[myConsts::VERTICAL_LENGTH - 2][i] = ' ';
+    }
+}
+
   

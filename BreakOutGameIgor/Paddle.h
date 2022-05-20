@@ -9,7 +9,7 @@ class Paddle : public GameItemBase
 public:
 	Paddle(myConsts::GameArea& playField);
 	void draw() override;
-//private:
+private:
 	
-	//int movePaddle();
+	void clearPaddle();
 };

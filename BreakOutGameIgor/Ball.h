@@ -7,7 +7,7 @@ class Ball : public GameItemBase
 {
 
 public:
-	Ball(myConsts::GameArea& playField);
-	void draw() override;
-
+    Ball(myConsts::GameArea& playField);
+    void draw() override;
+    void clearBall();
 };

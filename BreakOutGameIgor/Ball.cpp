@@ -1,11 +1,17 @@
-#include "Ball.h"
+#include "Ball.h" 
 
-Ball::Ball(myConsts::GameArea& playField) : GameItemBase(playField) {}
+Ball::Ball(myConsts::GameArea& playField) : GameItemBase(playField)
+{
+    setX(myConsts::HORISONT_LENGTH / 2);
+    setY(myConsts::START_Y_POSITION);
+}
 
 void Ball::draw()
 {
-    //for (int i = 10; i < myConsts::VERTICAL_LENGTH - 1; ++i)
-    //{
-        field[17][10] = 'o';
-    //}
+    field[getY()][getX()] = 'o';
+}
+
+void Ball::clearBall()
+{
+    field[getY()][getX()] = ' ';
 }

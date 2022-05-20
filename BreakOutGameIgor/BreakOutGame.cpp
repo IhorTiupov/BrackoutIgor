@@ -78,10 +78,18 @@ BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
                     exit();
                     break;
                 case myConsts::LEFT_MOVE:
-                    //movePaddlLeft();
+                    if (paddle.getX() - 1 > 0)
+                    {
+                        paddle.setX(paddle.getX() - 1);
+                    }
+                    paddle.draw();
                     break;
                 case myConsts::RIGTH_MOVE:
-                   // movePaddlRigth();
+                    if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < 20)
+                    {
+                        paddle.setX(paddle.getX() + 1);
+                    }
+                    paddle.draw();
                     break;
                 }
                 //ball.moveBall();
@@ -89,14 +97,7 @@ BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
 
         }
     }
-    //void movePaddlRigth(int x)
-    //{
-    //    
-    //}
-    //void movePaddlRigth(int x)
-    //{
 
-    //}
     void BreakOutGame::buildGame()
     {
         verticalSide.draw();
@@ -142,7 +143,9 @@ BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
     }
     bool BreakOutGame::gameOver()
     {
-        //if(live != 0)
+        //if(int lives  != 0)
+        
+       
 
         return 0;
     }

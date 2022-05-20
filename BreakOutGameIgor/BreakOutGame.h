@@ -9,9 +9,6 @@
 #include "ConstDigit.h"
 #include <vector>
 
-
-
-
 class BreakOutGame
 {
 public:
