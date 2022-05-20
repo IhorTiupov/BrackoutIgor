@@ -1,8 +1,6 @@
-
 #include "BreakOutGame.h"
 #include <iostream>
 #include <conio.h>
-
 
 BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
     verticalSide(VerticalSide{ gameField }), paddle(Paddle{ gameField }),
@@ -85,7 +83,7 @@ BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
                     paddle.draw();
                     break;
                 case myConsts::RIGTH_MOVE:
-                    if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < 20)
+                    if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
                     {
                         paddle.setX(paddle.getX() + 1);
                     }
@@ -144,9 +142,7 @@ BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
     bool BreakOutGame::gameOver()
     {
         //if(int lives  != 0)
-        
-       
-
+   
         return 0;
     }
 

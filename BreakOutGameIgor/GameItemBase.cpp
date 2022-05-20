@@ -1,6 +1,4 @@
-
 #include "GameItemBase.h" 
-
 
 void GameItemBase::setCord(int x, int y)
 {
@@ -8,7 +6,7 @@ void GameItemBase::setCord(int x, int y)
 	y_ = y;
 }
 
-GameItemBase::GameItemBase(myConsts::GameArea& playField) : x_(0), y_(0), field(playField)
+GameItemBase::GameItemBase(myConsts::GameArea& playField) : x_(0), y_(0), field_(playField)
 {}
 
 int GameItemBase::getX()

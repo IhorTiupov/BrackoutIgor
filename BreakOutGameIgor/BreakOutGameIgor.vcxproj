@@ -152,7 +152,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BreakOutGame.h" />
     <ClInclude Include="Brick.h" />
-    <ClInclude Include="ConstDigit.h" />
+    <ClInclude Include="HelperGameArguments.h" />
     <ClInclude Include="GameItemBase.h" />
     <ClInclude Include="HorisontSide.h" />
     <ClInclude Include="Paddle.h" />
