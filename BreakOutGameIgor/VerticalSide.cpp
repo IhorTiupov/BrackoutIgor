@@ -1,6 +1,5 @@
 #include "VerticalSide.h"
 
-
 VerticalSide::VerticalSide(myConsts::GameArea& playField) : GameItemBase(playField) {}
 
 void VerticalSide::draw()

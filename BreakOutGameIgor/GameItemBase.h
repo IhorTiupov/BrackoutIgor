@@ -2,12 +2,12 @@
 
 #include <memory>
 #include <vector> 
-#include "ConstDigit.h"
+#include "HelperGameArguments.h"
 
 class GameItemBase
 {
 public:
-	GameItemBase(myConsts::GameArea& field);
+	GameItemBase(myConsts::GameArea& field_);
 	virtual void draw() = 0;
 
 	void setCord(int x, int y);
@@ -17,7 +17,7 @@ public:
 	void setY(int y);
 
 protected:
-	myConsts::GameArea& field;
+	myConsts::GameArea& field_;
 
 private:
 	int x_;

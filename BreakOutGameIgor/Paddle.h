@@ -1,11 +1,9 @@
 #pragma once
 #include "GameItemBase.h"
-#include "ConstDigit.h"
-
+#include "HelperGameArguments.h"
 
 class Paddle : public GameItemBase
 {
-
 public:
 	Paddle(myConsts::GameArea& playField);
 	void draw() override;

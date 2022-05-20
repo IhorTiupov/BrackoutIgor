@@ -53,7 +53,7 @@
     <ClInclude Include="VerticalSide.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="ConstDigit.h">
+    <ClInclude Include="HelperGameArguments.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
     <ClInclude Include="Paddle.h">

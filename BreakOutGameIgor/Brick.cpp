@@ -6,7 +6,7 @@ void Brick::draw()
 {
     for (int i = 1; i < myConsts::VERTICAL_LENGTH - 1; ++i)
     {
-        field[1][i] = '#';
-        field[2][i] = '#';
+        field_[1][i] = '#';
+        field_[2][i] = '#';
     }
 }

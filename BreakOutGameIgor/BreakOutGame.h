@@ -6,7 +6,7 @@
 #include "Brick.h"
 #include "Paddle.h"
 #include "Ball.h"
-#include "ConstDigit.h"
+#include "HelperGameArguments.h"
 #include <vector>
 
 class BreakOutGame
@@ -17,9 +17,7 @@ public:
     void buildGame();
    
 private:
-    //char simbol;
-    
-    myConsts::GameArea gameField { myConsts::VERTICAL_LENGTH, std::vector<char>(myConsts::HORISONT_LENGTH, myConsts::FIELD_SIMBOL) };
+    myConsts::GameArea gameField { myConsts::VERTICAL_LENGTH, myConsts::FieldSimbol(myConsts::HORISONT_LENGTH, myConsts::FIELD_SIMBOL) };
     Ball ball;
     Paddle paddle;
     Brick brick;
@@ -37,8 +35,7 @@ private:
     void stop();
     bool gameOver();
     void printField();
-    //void movePaddlLeft();
-};  //void movePaddlRigth();
+};  
 
 
 

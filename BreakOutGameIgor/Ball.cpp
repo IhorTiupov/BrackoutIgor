@@ -8,10 +8,10 @@ Ball::Ball(myConsts::GameArea& playField) : GameItemBase(playField)
 
 void Ball::draw()
 {
-    field[getY()][getX()] = 'o';
+    field_[getY()][getX()] = 'o';
 }
 
 void Ball::clearBall()
 {
-    field[getY()][getX()] = ' ';
+    field_[getY()][getX()] = ' ';
 }

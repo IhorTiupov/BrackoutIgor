@@ -10,5 +10,6 @@ namespace myConsts
 	const int START_Y_POSITION = 17;
 	//int lives = 3;
 	using GameArea = std::vector<std::vector<char>>;
+	using FieldSimbol = std::vector<char>;
 }
 	
