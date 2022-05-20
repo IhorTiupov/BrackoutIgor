@@ -139,17 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BreakOutGameIgor.cpp" />
     <ClCompile Include="BreakOutGame.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="GameItemBase.cpp" />
     <ClCompile Include="HorisontSide.cpp" />
+    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="VerticalSide.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="BreakOutGame.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="ConstDigit.h" />
     <ClInclude Include="GameItemBase.h" />
     <ClInclude Include="HorisontSide.h" />
+    <ClInclude Include="Paddle.h" />
     <ClInclude Include="VerticalSide.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

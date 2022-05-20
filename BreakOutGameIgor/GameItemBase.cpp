@@ -1,5 +1,5 @@
-#include "GameItemBase.h"
 
+#include "GameItemBase.h" 
 
 
 void GameItemBase::setCord(int x, int y)
@@ -8,10 +8,7 @@ void GameItemBase::setCord(int x, int y)
 	y_ = y;
 }
 
-GameItemBase::GameItemBase() : x_(0), y_(0)
-{}
-
-GameItemBase::GameItemBase(std::shared_ptr<std::vector< std::vector<char>> > playField) : x_(0), y_(0), field(playField)
+GameItemBase::GameItemBase(myConsts::GameArea& playField) : x_(0), y_(0), field(playField)
 {}
 
 int GameItemBase::getX()
