@@ -5,7 +5,7 @@ Paddle::Paddle(myConsts::GameArea& playField) : GameItemBase(playField)
     setX(myConsts::HORISONT_LENGTH / 2);
 }
 
-void Paddle::draw()
+void Paddle::updateGameField()
 {
     int position = getX();
     clearPaddle();

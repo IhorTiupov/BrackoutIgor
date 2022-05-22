@@ -6,7 +6,7 @@ class Paddle : public GameItemBase
 {
 public:
 	Paddle(myConsts::GameArea& playField);
-	void draw() override;
+	void updateGameField() override;
 private:
 	
 	void clearPaddle();

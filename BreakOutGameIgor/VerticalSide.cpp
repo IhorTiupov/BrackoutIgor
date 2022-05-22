@@ -2,11 +2,11 @@
 
 VerticalSide::VerticalSide(myConsts::GameArea& playField) : GameItemBase(playField) {}
 
-void VerticalSide::draw()
+void VerticalSide::updateGameField()
 {
     for (int i = 0; i < myConsts::VERTICAL_LENGTH; ++i)
     {
-        field[i][0] = '|';
-        field[i][myConsts::HORISONT_LENGTH - 1] = '|';
+        field_[i][0] = '|';
+        field_[i][myConsts::HORISONT_LENGTH - 1] = '|';
     }
 }
