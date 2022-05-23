@@ -6,5 +6,5 @@ class HorisontSide : public GameItemBase
 {
 public:
 	HorisontSide(myConsts::GameArea& playField);
-	void draw() override;
+	void updateGameField() override;
 };

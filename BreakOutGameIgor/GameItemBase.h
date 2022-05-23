@@ -8,7 +8,7 @@ class GameItemBase
 {
 public:
 	GameItemBase(myConsts::GameArea& field_);
-	virtual void draw() = 0;
+	virtual void updateGameField() = 0;
 
 	void setCord(int x, int y);
 	int getX();

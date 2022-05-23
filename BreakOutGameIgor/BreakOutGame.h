@@ -3,11 +3,11 @@
 #include "GameItemBase.h"
 #include "HorisontSide.h"
 #include "VerticalSide.h"
-#include "Brick.h"
+#include "BricksManeger.h"
 #include "Paddle.h"
 #include "Ball.h"
 #include "HelperGameArguments.h"
-#include <vector>
+#include <vector> 
 
 class BreakOutGame
 {
@@ -15,16 +15,16 @@ public:
     BreakOutGame();
     void printMenu();
     void buildGame();
-   
 private:
-    myConsts::GameArea gameField { myConsts::VERTICAL_LENGTH, myConsts::FieldSimbol(myConsts::HORISONT_LENGTH, myConsts::FIELD_SIMBOL) };
+    myConsts::GameArea gameField{ myConsts::VERTICAL_LENGTH, myConsts::FieldSimbol(myConsts::HORISONT_LENGTH, myConsts::FIELD_SIMBOL) };
     Ball ball;
     Paddle paddle;
-    Brick brick;
-    //Data data;
+    BricksManeger bricksManeger;
     HorisontSide horisontSide;
     VerticalSide verticalSide;
-    
+    clock_t startTime_;
+    int lives_ = 3;
+    int time_ = 0;
     bool isGameContiniue = true;
     void setUserOption();
     void start();
@@ -33,9 +33,9 @@ private:
     void pause();
     void exit();
     void stop();
-    bool gameOver();
     void printField();
-};  
+    void printGameData();
+};
 
 
 
