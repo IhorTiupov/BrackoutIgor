@@ -56,68 +56,103 @@ void BreakOutGame::setUserOption()
 void BreakOutGame::start()
 {
     buildGame();
+    
+    char pressedKey = ' ';
+    while (isGameContiniue)
     {
-        char pressedKey = ' ';
-        while (isGameContiniue)
+        if (bricksManeger.bricksCount() == 0)
         {
-            if (bricksManeger.bricksCount() == 0)
+            isGameContiniue = false;
+            std::cout << " YOU ARE WINNER " << std::endl;
+            continue;
+        }
+        if (lives_ == 0)
+        {
+            isGameContiniue = false;
+            std::cout << " GAME OVER " << std::endl;
+            std::cout << " press any key " << std::endl;
+            system("pause");
+            printMenu();
+            break;
+        }
+        if (ball.isBallFallen())
+        {
+            lives_ = lives_ - 1;
+            ball.restartBall();
+        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        system("cls");
+        printGameData();
+        printField();
+        ball.updateGameField();
+        //kyebordSet();
+        if (_kbhit())
+        {
+            //kyebordSet();
+            pressedKey = _getch();
+            switch (pressedKey)
             {
-                isGameContiniue = false;
-                std::cout << " YOU ARE WINNER " << std::endl;
-                continue;
-            }
-            if (lives_ == 0)
-            {
-                isGameContiniue = false;
-                std::cout << " GAME OVER " << std::endl;
-                std::cout << " press any key " << std::endl;
-                system("pause");
-                printMenu();
+            case 'p':
+                pause();
                 break;
-            }
-            if (ball.isBallFallen())
-            {
-                lives_ = lives_ - 1;
-                ball.restartBall();
-            }
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            system("cls");
-            printGameData();
-            printField();
-            ball.updateGameField();
-            if (_kbhit())
-            {
-                pressedKey = _getch();
-                switch (pressedKey)
+            case 's':
+                stop();
+                break;
+            case 'r':
+                restart();
+                break;
+            case myConsts::LEFT_MOVE:
+                if (paddle.getX() - 1 > 0)
                 {
-                case 'p':
-                    pause();
-                    break;
-                case 's':
-                    stop();
-                    break;
-                case 'r':
-                    restart();
-                    break;
-                case myConsts::LEFT_MOVE:
-                    if (paddle.getX() - 1 > 0)
-                    {
-                        paddle.setX(paddle.getX() - 2);
-                    }
-                    paddle.updateGameField();
-                    break;
-                case myConsts::RIGTH_MOVE:
-                    if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
-                    {
-                        paddle.setX(paddle.getX() + 2);
-                    }
-                    paddle.updateGameField();
-                    break;
+                    paddle.setX(paddle.getX() - 2);
                 }
+                paddle.updateGameField();
+                break;
+            case myConsts::RIGTH_MOVE:
+                if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
+                {
+                    paddle.setX(paddle.getX() + 2);
+                }
+                paddle.updateGameField();
+                break;
             }
         }
     }
+    
 }
+
+//void kyebordSet()
+//{
+//        pressedKey = _getch();
+//        switch (pressedKey)
+//        {
+//        case 'p':
+//            pause();
+//            break;
+//        case 's':
+//            stop();
+//            break;
+//        case 'r':
+//            restart();
+//            break;
+//        case myConsts::LEFT_MOVE:
+//            if (paddle.getX() - 1 > 0)
+//            {
+//                paddle.setX(paddle.getX() - 2);
+//            }
+//            paddle.updateGameField();
+//            break;
+//        case myConsts::RIGTH_MOVE:
+//            if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
+//            {
+//                paddle.setX(paddle.getX() + 2);
+//            }
+//            paddle.updateGameField();
+//            break;
+//        
+//}
+
+
 
 void BreakOutGame::buildGame()
 {
