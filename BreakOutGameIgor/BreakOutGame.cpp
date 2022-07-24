@@ -4,6 +4,9 @@
 #include <conio.h>
 #include <thread>
 #include <chrono> 
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include<Windows.h>
 
 BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
 verticalSide(VerticalSide{ gameField }), paddle(Paddle{ gameField }),
@@ -26,11 +29,11 @@ void BreakOutGame::printMenu()
 void BreakOutGame::setUserOption()
 {
     char optionCase = 0;
+    
 
-    while (optionCase == 'e' || 'b' || 'p')
+    while (true)
     {
         std::cin >> optionCase;
-
         if (optionCase == 'b')
         {
             start();
@@ -53,6 +56,13 @@ void BreakOutGame::setUserOption()
     }
 }
 
+void setCursorPosition(int x, int y)
+{
+    static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    std::cout.flush();
+    COORD coord = { (SHORT)x, (SHORT)y };
+    SetConsoleCursorPosition(hOut, coord);
+}
 void BreakOutGame::start()
 {
     buildGame();
@@ -60,6 +70,7 @@ void BreakOutGame::start()
         char pressedKey = ' ';
         while (isGameContiniue)
         {
+            setCursorPosition(0,0);
             if (bricksManeger.bricksCount() == 0)
             {
                 isGameContiniue = false;
@@ -72,6 +83,7 @@ void BreakOutGame::start()
                 std::cout << " GAME OVER " << std::endl;
                 std::cout << " press any key " << std::endl;
                 system("pause");
+                isGameContiniue = true;
                 printMenu();
                 break;
             }
@@ -81,11 +93,41 @@ void BreakOutGame::start()
                 ball.restartBall();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            system("cls");
+            //system("cls");
             printGameData();
             printField();
             ball.updateGameField();
-            if (_kbhit())
+
+            if (GetAsyncKeyState(VK_LEFT))
+            {
+                if (paddle.getX() - 1 > 0)
+                {
+                    paddle.setX(paddle.getX() - 2);
+                }
+                paddle.updateGameField();;
+            }
+            if (GetAsyncKeyState(VK_RIGHT))
+            {
+                if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
+                {
+                    paddle.setX(paddle.getX() + 2);
+                }
+                paddle.updateGameField();
+            }
+            if (GetAsyncKeyState(0x52))
+            {
+                restart();
+            }
+            if (GetAsyncKeyState(0x50))
+            {
+                pause();
+            }
+            if (GetAsyncKeyState(0x53))
+            {
+                stop();
+            }
+
+            /*if (_kbhit())
             {
                 pressedKey = _getch();
                 switch (pressedKey)
@@ -113,8 +155,8 @@ void BreakOutGame::start()
                     }
                     paddle.updateGameField();
                     break;
-                }
-            }
+                }*/
+            //}
         }
     }
 }
