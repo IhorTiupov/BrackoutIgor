@@ -62,6 +62,10 @@ void setCursorPosition(int x, int y)
     std::cout.flush();
     COORD coord = { (SHORT)x, (SHORT)y };
     SetConsoleCursorPosition(hOut, coord);
+    CONSOLE_CURSOR_INFO CCI;
+    CCI.bVisible = false;
+    CCI.dwSize = 1;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CCI);
 }
 void BreakOutGame::start()
 {
@@ -93,7 +97,6 @@ void BreakOutGame::start()
                 ball.restartBall();
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(2));
-            //system("cls");
             printGameData();
             printField();
             ball.updateGameField();
@@ -126,37 +129,6 @@ void BreakOutGame::start()
             {
                 stop();
             }
-
-            /*if (_kbhit())
-            {
-                pressedKey = _getch();
-                switch (pressedKey)
-                {
-                case 'p':
-                    pause();
-                    break;
-                case 's':
-                    stop();
-                    break;
-                case 'r':
-                    restart();
-                    break;
-                case myConsts::LEFT_MOVE:
-                    if (paddle.getX() - 1 > 0)
-                    {
-                        paddle.setX(paddle.getX() - 2);
-                    }
-                    paddle.updateGameField();
-                    break;
-                case myConsts::RIGTH_MOVE:
-                    if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
-                    {
-                        paddle.setX(paddle.getX() + 2);
-                    }
-                    paddle.updateGameField();
-                    break;
-                }*/
-            //}
         }
     }
 }
