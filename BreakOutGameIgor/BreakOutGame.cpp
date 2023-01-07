@@ -4,6 +4,9 @@
 #include <conio.h>
 #include <thread>
 #include <chrono> 
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN
+#include<Windows.h>
 
 BreakOutGame::BreakOutGame() : horisontSide(HorisontSide{ gameField }),
 verticalSide(VerticalSide{ gameField }), paddle(Paddle{ gameField }),
@@ -26,11 +29,11 @@ void BreakOutGame::printMenu()
 void BreakOutGame::setUserOption()
 {
     char optionCase = 0;
+    
 
-    while (optionCase == 'e' || 'b' || 'p')
+    while (true)
     {
         std::cin >> optionCase;
-
         if (optionCase == 'b')
         {
             start();
@@ -53,6 +56,17 @@ void BreakOutGame::setUserOption()
     }
 }
 
+void setCursorPosition(int x, int y)
+{
+    static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    std::cout.flush();
+    COORD coord = { (SHORT)x, (SHORT)y };
+    SetConsoleCursorPosition(hOut, coord);
+    CONSOLE_CURSOR_INFO CCI;
+    CCI.bVisible = false;
+    CCI.dwSize = 1;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CCI);
+}
 void BreakOutGame::start()
 {
     buildGame();
@@ -62,63 +76,64 @@ void BreakOutGame::start()
     {
         if (bricksManeger.bricksCount() == 0)
         {
-            isGameContiniue = false;
-            std::cout << " YOU ARE WINNER " << std::endl;
-            continue;
-        }
-        if (lives_ == 0)
-        {
-            isGameContiniue = false;
-            std::cout << " GAME OVER " << std::endl;
-            std::cout << " press any key " << std::endl;
-            system("pause");
-            printMenu();
-            break;
-        }
-        if (ball.isBallFallen())
-        {
-            lives_ = lives_ - 1;
-            ball.restartBall();
-        }
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
-        system("cls");
-        printGameData();
-        printField();
-        ball.updateGameField();
-        //kyebordSet();
-        if (_kbhit())
-        {
-            //kyebordSet();
-            pressedKey = _getch();
-            switch (pressedKey)
+
+            setCursorPosition(0,0);
+            if (bricksManeger.bricksCount() == 0)
             {
-            case 'p':
-                pause();
+                isGameContiniue = false;
+                std::cout << " YOU ARE WINNER " << std::endl;
+                continue;
+            }
+            if (lives_ == 0)
+            {
+                isGameContiniue = false;
+                std::cout << " GAME OVER " << std::endl;
+                std::cout << " press any key " << std::endl;
+                system("pause");
+                isGameContiniue = true;
+                printMenu();
                 break;
-            case 's':
-                stop();
-                break;
-            case 'r':
-                restart();
-                break;
-            case myConsts::LEFT_MOVE:
+            }
+            if (ball.isBallFallen())
+            {
+                lives_ = lives_ - 1;
+                ball.restartBall();
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+            printGameData();
+            printField();
+            ball.updateGameField();
+
+            if (GetAsyncKeyState(VK_LEFT))
+            {
                 if (paddle.getX() - 1 > 0)
                 {
                     paddle.setX(paddle.getX() - 2);
                 }
-                paddle.updateGameField();
-                break;
-            case myConsts::RIGTH_MOVE:
+                paddle.updateGameField();;
+            }
+            if (GetAsyncKeyState(VK_RIGHT))
+            {
                 if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
                 {
                     paddle.setX(paddle.getX() + 2);
                 }
                 paddle.updateGameField();
-                break;
+            }
+            if (GetAsyncKeyState(0x52))
+            {
+                restart();
+            }
+            if (GetAsyncKeyState(0x50))
+            {
+                pause();
+            }
+            if (GetAsyncKeyState(0x53))
+            {
+                stop();
             }
         }
     }
-    
 }
 
 //void kyebordSet()
