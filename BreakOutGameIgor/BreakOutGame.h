@@ -23,8 +23,8 @@ private:
     HorisontSide horisontSide;
     VerticalSide verticalSide;
     clock_t startTime_;
-    int lives_ = 3;
-    int time_ = 0;
+    int lives_;
+    int time_;
     bool isGameContiniue = true;
     void setUserOption();
     void start();
@@ -35,6 +35,7 @@ private:
     void stop();
     void printField();
     void printGameData();
+    //void kyebordSet();
 };
 
 
