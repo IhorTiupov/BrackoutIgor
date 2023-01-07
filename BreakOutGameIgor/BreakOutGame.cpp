@@ -70,10 +70,13 @@ void setCursorPosition(int x, int y)
 void BreakOutGame::start()
 {
     buildGame();
+    
+    char pressedKey = ' ';
+    while (isGameContiniue)
     {
-        char pressedKey = ' ';
-        while (isGameContiniue)
+        if (bricksManeger.bricksCount() == 0)
         {
+
             setCursorPosition(0,0);
             if (bricksManeger.bricksCount() == 0)
             {
@@ -132,6 +135,39 @@ void BreakOutGame::start()
         }
     }
 }
+
+//void kyebordSet()
+//{
+//        pressedKey = _getch();
+//        switch (pressedKey)
+//        {
+//        case 'p':
+//            pause();
+//            break;
+//        case 's':
+//            stop();
+//            break;
+//        case 'r':
+//            restart();
+//            break;
+//        case myConsts::LEFT_MOVE:
+//            if (paddle.getX() - 1 > 0)
+//            {
+//                paddle.setX(paddle.getX() - 2);
+//            }
+//            paddle.updateGameField();
+//            break;
+//        case myConsts::RIGTH_MOVE:
+//            if (paddle.getX() + 1 + myConsts::PADDLE_SIZE < myConsts::HORISONT_LENGTH)
+//            {
+//                paddle.setX(paddle.getX() + 2);
+//            }
+//            paddle.updateGameField();
+//            break;
+//        
+//}
+
+
 
 void BreakOutGame::buildGame()
 {
